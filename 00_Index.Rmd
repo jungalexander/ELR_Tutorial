@@ -1,0 +1,25 @@
+--- 
+title: EffectLiteR Tutorial
+author: Alexander Jung, Christoph Kiefer & Axel Mayer
+output: 
+  bookdown::gitbook
+site: bookdown::bookdown_site
+documentclass: book
+#bibliography: [book.bib, packages.bib]
+#biblio-style: apalike
+link-citations: yes
+description: This is a Tutorial for the EffectLiteR package.
+---
+
+
+# Index
+
+EffectLiteR ist eine auf der Statistiksoftware R (und dem R-Paket lavaan) basierende Applikation, die zur Analyse (bedingter) Treatment-Effekte vorgesehen ist. Unter bedingten Treatment-Effekten kann die Wirkung einer kategorialen Treatment-Bedingung im Vergleich zu einer Kontroll-Bedingung und unter Berücksichtigung beliebig vieler Kovariaten verstanden werden. Eine Besonderheit von EffectLiteR ist dabei, dass es grundsätzlich (bedingte) durchschnittliche Effekte schätzt, die sich im Falle unbalncierter Designs von Haupteffekten (wie sie etwa SPSS ausgibt) unterscheiden. Die (bedingten) sind hilfreich um für die Kausalität von Effekten zu argumentieren.  
+Zur Bedienung von EffectLiteR ist es, anders als zur Verwendung von R, nicht nötig selbst Syntax zu schreiben. EffectLiteR kann als eine Oberfläche verstanden werden, die die per Mausklick übermittelten Befehle des Nutzers in R-Code übersetzt, den Code an R weiterleitet und die Ergebnisse der Analysen von R darstellt. Das bedeutet: alles was EffectLiteR kann (und noch vieles mehr) ist auch mit R möglich, die Verwendung von EffectLiteR vereinfacht die Anwendung allerdings um Längen.   
+
+Das vorliegende Tutorial führt schrittweise in die Denkweise der bedingten Effekte und die Verwendung der Applikation EffectLiteR ein. Das erste inhaltliche Kapitel beschreibt, wie einfache Modelle, in denen eine abhängige Variable lediglich durch eine Treatment-Variable vorhergesagt wird, in einer [einfachen linearen Regression](#eins) parametrisiert und ausgewertet werden können. Im Kapitel [zweifache lineare Regression](#zwei) werden die Modelle um eine zusätzliche Kovariate erweitert, im Kapitel [bedingte lineare Regression](#bedingt) wird schließlich auch der Effekt der Interaktion aus Treatment-Variable und Kovariate auf die abhängige Variable berücksichtigt. Sobald du das Grundprinzip der bedingten linearen Regression verstanden hast gibt es ein weiteres [Kapitel](#komplex), mit Übungen zur Interpretation immer komplexer werdender Modelle mit mehreren Kovariaten.
+
+Das Tutorial ist voller Screenshots, die zeigen wo, was eingegeben werden kann und voller praktischer Übungen, die meist an einem bereitgestellten simulierten Datensatz durchgeführt werden können. Zu allen praktischen Übungen gibt es Lösungsvideos. Die Idee hinter den Übungen und Lösungsvideos ist es, euch die Möglichkeit zu geben neben dem theoretischen Verständnis der Materie auch die „Mechanik“ der Applikation durch ausprobieren und durch Lernen am Modell zu verinnerlichen. 
+Das nächste Kapitel startet direkt mit Screenshots und Videos zum Download der Applikation.  
+In diesem Sinne: Viel Spaß und Erfolg beim Lesen, Üben und Erlernen der Software!
+

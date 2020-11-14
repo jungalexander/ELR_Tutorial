@@ -1,0 +1,130 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r, echo=FALSE, include=FALSE}
+library(knitr)
+```
+
+# Lösungen{#lösungen}
+
+## Dateneinlesen
+Folgende Einstellungen müssen unter *Additional Options to Read Data* vorgenommen werden:
+
+```{r, echo=FALSE, fig.cap="Nötige Veränderungen unter Additionl Options to Read Data", out.width = '38%', warning=FALSE, message=FALSE, fig.pos="htbp"}
+include_graphics("images/Lösung_Daten_Einlesen.png")
+```
+
+Siehe die Lösung im Video an:
+
+<video width="320" height="240" controls>
+  <source src="screenvideos/Daten_Einlesen.mp4" type="video/mp4">
+  
+## Einfache lineare Regression
+### A)
+Erwartungswerte unter den verschiedenen Behandlungsarten:
+$\small E(Y|X=0)=30.5$  
+$\small E(Y|X=1)=45.9$  
+$\small E(Y|X=2)=52.3$  
+
+Unterschiede zwischen den Behandlungsarten:
+$\small E(Y|X=1)$ vs. $\small E(Y|X=0)$ entspricht g100: 15.36
+$\small E(Y|X=2)$ vs. $\small E(Y|X=0)$ entspricht g200: 21.78
+$\small E(Y|X=2)$ vs. $\small E(Y|X=1)$ entspricht g200 nach Wechsel der Referenzgruppe: 6.42
+
+Siehe die Lösung im Video an:
+
+<video width="320" height="240" controls>
+  <source src="screenvideos/einfach_Lösung.mp4" type="video/mp4">
+
+### B)
+Unter *Average Effects* im Hauptoutput finden sich die absoluten und die (an der Standardabweichung der AV in der Kontrollgruppe) standardisierten durchschnittlichen Effekte.
+
+$\small Effect Size = \frac{Estimate}{SD_{YinKontrollgruppe}}$
+
+$\small 1.63 \approx  \frac{15.4}{9.44}$ oder $\small 2.31 \approx  \frac{21.8}{9.44}$
+Daraus Folgt: $\small SD_{YinKontrollgruppe} \approx 9.44$
+
+## Zweifache lineare Regression
+### A)
+
+1. Bedingte Erwartungswerte:
+  + $\small E(Y|X=0,K=0)=29.228$
+  + $\small E(Y|X=0,K=1)=32.3$
+  + $\small E(Y|X=1,K=0)=44.608$
+  + $\small E(Y|X=1,K=1)=47.679$
+  + $\small E(Y|X=2,K=0)=51.102$
+  + $\small E(Y|X=2,K=1)=54.173$
+2. Effekt von Behandlungsart 1 im Vergleich zu Behandlungsart 0: $\small g_{100}=15.38$, $\small p<0.05$
+3. Effekt von Behandlungsart 2 im Vergleich zu Behandlungsart 0: $\small g_{200}=21.874$, $\small p<0.05$
+4. Effekt der Kovariaten: $\small g_{010}=3.072$, $\small p<0.05$
+
+Siehe die Lösung im Video an:
+
+<video width="320" height="240" controls>
+  <source src="screenvideos/zweifach_K_Lösung.mp4" type="video/mp4">
+
+### B){#zstandlösung}
+
+*Subjektive soziale Unterstützung* z-standardisieren: $\small X_{z-stand.}=\frac{X-\bar{X}}{SD_X}$   
+Wie du eine Variable z-standardisierst kannst dir auch in folgenden Videos ansehen:
+
+Detailliertes Video zur z-Standardisierung von Variablen mit R:
+
+<video width="320" height="240" controls>
+  <source src="screenvideos/z_Standardisierung_R.mp4" type="video/mp4">
+</video>
+
+
+Video zur z-Standardisierung von Variablen mit Excel:
+
+<video width="320" height="240" controls>
+  <source src="screenvideos/z_Standardisierung_Excel.mp4" type="video/mp4">
+</video>
+
+
+Ansonsten ist die Aufgabe äquivalent zu lösen wie Aufgabe 1 zur zweifachen linearen Regression. Achte darauf, die z-standardisierte Variable unter *Continuous Covariates Z* einzugeben und unter Interactions *No interactions* auszuwählen.
+
+1. Bedingte Erwartungswerte:
+  + $\small E(Y|X=0,Z_1=\bar{Z_1}=0)=30.673     $
+  + $\small E(Y|X=0,Z_1=\bar{Z_1}+SD_{Z_1}=1)=33.582     $
+  + $\small E(Y|X=1,Z_1=\bar{Z_1}=0)=45.531     $
+  + $\small E(Y|X=1,Z_1=\bar{Z_1}+SD_{Z_1}=1)=48.441     $
+  + $\small E(Y|X=2,Z_1=\bar{Z_1}=0)=52.556$
+  + $\small E(Y|X=2,Z_1=\bar{Z_1}+SD_{Z_1}=1)=55.466$
+2. Der Effekt von Behandlungsart 1 im Vergleich zu Behandlungsart 0: $\small g_{100}=14.859$, signifikant da $\small p<0.05$
+3. Der Effekt von Behandlungsart 2 im Vergleich zu Behandlungsart 0: $\small g_{200}=21.884$, signifikant da $\small p<0.05$
+4. Der Effekt einer Änderung der Kovariaten um plus 1,5 Standardabweichungen berechnet sich durch $\small g_{001}\times 1.5=4,3635$ (Aufgrund der z-Standardisierung der Kovariate entspricht g001 dem Effekt der Steigerung um eine Standardabweichung). Der Effekt ist signifikant, da $\small p_{g_{001}}<0.05$
+
+## Bedingte lineare Regression
+
+### A)
+
+1. Es gibt eine signifikante Interaktion, der Parameter g101 wird signifikant, der Parameter g201 wird allerdings nicht signifikant. Dies bedeutet: Bei Behandlungsart 1 hat die Kovariaten Ausprägung einen Effekt auf den Gesundheitsscore, der über den Effekt der Kovariate in der Kontrollgruppe hinausgeht, der Effekt der Kovariaten bei Behandlungsart 2 weicht nicht signifikant vom Effekt der Kovariaten in der Kontrollbedingung ab. Ein Patient, der mit Behandlungsart 1 behandelt wird und eine Kovariaten ausprägung von $\small z_1 = \bar{Z_1}+SD_{Z1}$ hat, hat geschätzt einen um $\small g_{001}+g_{101}=4.789$ Punkte höheren Gesundheitsscore, als ein Patient mit durchschnittlicher Kovariaten-Ausprägung, der mit der selben Behandlungsmethode behandelt wurde.
+2. Der Intercept-Parameter g000 ist in beiden Fällen identisch, die Parameter, die die Effekte von Treatment und/oder Kovariate abbilden verändern sich aber abhängig davon, ob eine Interaktion zwischen Treatment und Kovariate geschätzt wird. Da eine Interaktion vorliegt (die Kovariate hat unter Behandlungsart 1 größere Auswirkungen auf den Gesundheitsscore als in der Kontrollgruppe), macht die zweifache lineare Regression falsche Annahmen, ihre Parameter sind dementsprechend weniger Vertrauenswürdig als die der bedingten linearen Regression.
+
+Siehe die Lösung im Video an:
+
+<video width="320" height="240" controls>
+  <source src="screenvideos/bedingt1_Lösung.mp4" type="video/mp4">
+
+### B)
+
+3. $\small E(Y|X=1,Z'_1=1.784)=53.837$          
+4. $\small E(Y|X=0,Z'_1=1.784)=34.455 < E(Y|X=1,Z'_1=1.784)=53.837 <l E(Y|X=2,Z'_1=1.784)=55.273$: Wir würden dem Patienten Behandlungsart 2 empfehlen, da diese den höchsten Erwartungswert erwarten lässt.
+
+Siehe die Lösung im Video an:
+
+<video width="320" height="240" controls>
+  <source src="screenvideos/bedingt2_Lösung.mp4" type="video/mp4">
+  
+## Plots
+
+Die bedingte lineare Regression erlaubt einen linearen Einfluss der Kovariaten auf die Effektfunktion: Behandlungsart 1 wirkt um so stärker, je höher die Ausprägung der Kovariaten bei behandelten Patienten ist. Die zweifache lineare Regression erlaubt lediglich einen konstanten Einfluss der Kovariaten auf die Behandlungsart. Die Effektfunktion verändert sich nicht in Abhängigkeit der Kovariaten-Ausprägung, sondern wird für alle Patienten gleich geschätzt.
+
+Höre dir die Erklärung im Video an:
+
+<video width="320" height="240" controls>
+  <source src="screenvideos/plots_Lösung.mp4" type="video/mp4">

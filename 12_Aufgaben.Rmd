@@ -1,0 +1,78 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r, echo=FALSE, include=FALSE}
+library(knitr)
+```
+
+# Übungen
+## Dateneinlesen
+Downloade den [Übungsdatensatz 1](../Datensätze/EffectLiteR_Tutorial_Übungsdatensatz1.csv) und lese ihn mit EffectLiteR ein. Der Datensatz entspricht nicht den Default-Einstellungen von EffectLiteR, du musst Änderungen an den *Additional Options to Read Data* vornehmen, insgesamt sind drei Änderungen notwendig, bevor du anfangen könntest Berechnungen am Datensatz vorzunehmen. Führe diese drei Änderungen durch, gehe Schrittweise vor und achte dabei auf Plausibilität der angezeigten Daten.
+
+
+## Einfache lineare Regression
+
+Der [Übungsdatensatz 2](../Datensätze/EffectLiteR_Tutorial_Übungsdatensatz2.csv) enthält (unter anderem) simulierte Daten für das [Beispiel 2](#bspzwei). Lese den Datensatz ein und wähle Gesundheitsscore als abhängige Variable und Behandlungsart als Treatmentvariable.  
+
+### A)
+Interpretiere den Hauptoutput:   
+Wie groß sind die jeweiligen Erwartungswerte des Gesundheitsscores unter den drei verschiedenen Behandlungsarten? Wie groß sind die deskriptiven Unterschiede zwischen den verschiedenen Bedingungen (keine Behandlung, Behandlung 1, Behandlung 2)? Unterscheiden sich alle drei Bedingungen signifikant von einander? 
+*Beachte: Um den Unterschied zwischen Behandlung 1 und Behandlung 2 zu interpretieren muss die Referenzgruppe verändert werden.*
+
+### B)
+Errechne die Standardabweichung der abhängigen Variable *Gesundheitsscore* im Übungsdatensatz 2 für Personen, die keine Behandlung erhielten, mithilfe der Effektstärke aus dem EffectLiteR-Output. Wie das geht kannst du unter [Average Effects](#einsaverageeffects) nachlesen.
+
+## Zweifache lineare Regression
+### A)
+Der [Übungsdatensatz 2](../Datensätze/EffectLiteR_Tutorial_Übungsdatensatz2.csv) enthält (unteranderem) simulierte Daten für das [Beispiel 3](#bspdrei). Lese den Datensatz ein, wähle Gesundheitsscore als abhängige Variable, Behandlungsart als Treatmentvariable und subjektiv ausreichend soziale Unterstützung als kategoriale Kovariate.
+Interpretiere den Hauptoutput:
+
+1. Wie groß ist der Erwartete Gesundheitsscore unter folgenden Bedingungen:
+  +	Behandlungsart = 0, subj_ausreichend_soz_Unterstützung = 0
+  +	Behandlungsart = 0, subj_ausreichend_soz_Unterstützung = 1
+  +	Behandlungsart = 1, subj_ausreichend_soz_Unterstützung = 0
+  +	Behandlungsart = 1, subj_ausreichend_soz_Unterstützung = 1
+  +	Behandlungsart = 2, subj_ausreichend_soz_Unterstützung = 0
+  +	Behandlungsart = 2, subj_ausreichend_soz_Unterstützung = 1
+2. Wie groß ist der Effekt von Behandlungsart 1 im Vergleich zu Behandlungsart 0 und ist er signifikant?
+3. Wie groß ist der Effekt von Behandlungsart 2 im Vergleich zu Behandlungsart 0 und ist er signifikant?
+4. Wie groß ist der Effekt von subjektiv ausreichender sozialer Unterstützung und ist er signifikant?
+
+### B)
+Nutze nun subjektive soziale Unterstützung als kontinuierliche Kovariate, ansonsten belasse alle Variablen wie in Teil A) der Übung. Die verwendeten Variablen entsprechen nun [Beispiel 4](#bspvier).
+Berechne eine bedingte Regression von Behandlungsart und subjektiv gemessener sozialer Unterstützung (kontinuierlich) auf den Gesundheitsscore (entspricht [Beispiel 4](#bspvier).  
+*Beachte:* Zur Lösung der Aufgabe ist es hilfreich, wenn die kontinuierliche Kovariate z-standardisiert ist. Die z-Standardisierung muss vor dem Einlesen in EffectLiteR erfolgen.  
+Interpretiere den Hauptoutput: 
+
+1. Wie groß ist der erwartete Gesundheitsscore unter den verschiedenen Ausprägungen von X a) bei durchschnittlicher Ausprägung der Kovariate und b) bei einer Kovariaten-Ausprägung von einer Standardabweichung über dem Durchschnitt.
+2. Wie groß ist der Effekt von Behandlungsart 1 im Vergleich zu Behandlungsart 0 und ist er signifikant?
+3. Wie groß ist der Effekt von Behandlungsart 2 im Vergleich zu Behandlungsart 0 und ist er signifikant?
+4. Hat subjektive soziale Unterstützung einen signifikanten Einfluss auf den Gesundheitsscore? Welchen Effekt hat die Steigerung von subjektiver sozialer Unterstützung um anderthalb Standardabweichung auf den Gesundheitsscore?
+
+
+## Bedingte lineare Regression
+
+Rechne eine bedingte lineare Regression mit Gesundheitsscore als abhängiger Variable, Behandlungsart als Treatmentvariable und subjektiver sozialer Unterstützung als kategoriale Kovariate (Daten aus dem [Übungsdatensatz 2](../Datensätze/EffectLiteR_Tutorial_Übungsdatensatz2.csv)). *Beachte*: Die inhaltliche Interpretation der Parameter wird durch [z-Standardisierung](#zstandlösung) der kontinuierlichen Kovariaten deutlich erleichtert, die Transformation der Daten muss vor dem Einlesen in EffectLiteR geschehen.
+
+### A)
+
+1. Wird der Interaktionseffekt signifikant? Interpretiere die Aussage des Interaktionseffektes in Worten.
+2. Rechne mit dem selben Datensatz zusätzlich eine zweifache lineare Regression (d.h. deaktiviere Interaktionseffekte unter *Options*). Vergleiche Die Parameter g000, g001, g100 und g200 die in beiden Fällen geschätzt werden, was fällt dir auf? Welche Parameter erscheinen dir vertrauenserweckender, d.h. welche Effekte würdest du interpretieren und warum?
+
+
+### B)
+
+3. Ein Patient hat die  Kovariatenausprägung $\small z_1=8$ (nach z-Standardisierung: $\small z'_1\approx 1.784$) und wurde mit Behandlungsmethode 1 behandelt. Welcher Gesundheitsscore kann bei ihm erwartet werden? (Zur Beantwortung dieser Frage ist das Kapitel [Conditional Effects](#conditionaleffects) hilfreich.
+4. Ein anderer Patient hat ebenfalls eine Kovariatenausprägung von z=8 (z'=xy), wurde aber noch nicht behandelt. Welche Behandlungsart würde ihm, basierend auf den vorliegenden Daten, vermutlich am besten helfen? (Zur Beantwortung dieser Frage ist das Kapitel [Conditional Effects](#conditionaleffects) hilfreich.
+
+## Plots
+Lade den [Übungsdatensatz 2](../Datensätze/EffectLiteR_Tutorial_Übungsdatensatz2.csv), rechne eine bedingte lineare Regression mit Gesundheitsscore als Regressand und der Behandlungsart subjektiver sozialer Unterstützung als Prädiktor. Lasse dir von Plot 3 die Regression subjektiver sozialer Unterstützung auf eine der Effektfunktionen anzeigen.  
+
+Wie verändert sich die Steigung der Regressionsgeraden, wenn du  anstatt einer bedingten linearen Regression eine zweifache lineare Regression rechnest (im Eingabepanel unter *Options* *No Interactions* auswählen)?
+Mache dir am Vergleich der beiden Graphen klar, worin der Unterschied zwischen den beiden Regressionsmodellen besteht und erkläre, warum sich die Steigung verändert.  
+
+
+*Weitere Aufgaben finden sich im Kapitel [Komplexerer Parametrisierungen  - Übungen](#komplex)*

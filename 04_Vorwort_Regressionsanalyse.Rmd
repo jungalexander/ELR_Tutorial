@@ -1,0 +1,16 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r, echo=FALSE, include=FALSE}
+library(knitr)
+```
+# Vorwort zur Regressionsanalyse mit EffectLiteR
+
+EffectLiteR dient in erster Linie der Berechnung von Effekten unter verschiedenen Treatment-Bedingungen, hierfür liefert es eine sehr genau interpretierbare Parametrisierung. 
+EffectLiteR dient nicht primär der Analyse von Regressionsmodellen, dennoch lassen sich einige Regressionsmodelle mit EffectLiteR berechnen – nämlich solche Regressionen, die mindestens eine kategoriale Variable als Prädiktor enthalten. Diese kategoriale Prädiktor-Variable sollte eine  Treatment-Bedingung darstellen, ihr Effekt wird im vorliegenden Tutorial konsequent als Treatment-Effekt bezeichnet. 
+Die Kapitel-Aufteilung, die von der einfachen linearen Regression über die zweifache lineare Regression hin zur bedingten linearen Regression führt, dient der schrittweisen (vorlesungsbegleitenden) Heranführung an die eigentlichen Anwendungsgebiete des Programmes.  
+
+**Beachte:** Zur inhaltlichen interpretation der Parameter der Regressionsmodelle werden im vorliegenden Tutorial viele Formeln verwendet. Was auf den ersten Blick kompliziert erscheint dient tatsächlich einer Vereinfachung des Verständnisses: Dadurch, dass jeder einzelne Rechenschritt in Formeln dargestellt wird, ist es möglich alle Formeln einfach nachzuvollziehen. Bitte tue das auch und lese nicht über die Formeln hinweg!
