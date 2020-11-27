@@ -10,7 +10,7 @@ library(knitr)
 
 # Komplexerer Parametrisierungen  - Übungen{#komplex}
 
-In diesem Kapitel werden aufeinander aufbauend Übungen zu immer komplexeren Regressions-Modellen präsentiert. Die Übungen sind theoretischer Natur: Durch komlexere Modelle steigen die Anforderungen an die Interpretation von Parametern und Effekten, die Anforderungen an die Bedienung von EffectLiteR steigen nicht. Die Lösungen zu den Aufgaben befinden sich weiter unten im Kapitel.
+In diesem Kapitel werden aufeinander aufbauend Übungen zu immer komplexeren Regressions-Modellen präsentiert. Die Übungen sind theoretischer Natur: Durch komlexere Modelle steigen die Anforderungen an die Interpretation von Parametern und Effekten, die Eingabe der Modelle in EffectLiteR wird hingegen nicht komplizierter. Die Lösungen zu den Aufgaben befinden sich weiter unten im Kapitel.
 
 ## Übungen
 
@@ -41,12 +41,12 @@ g2(K) &= g200 + g210 \times I_{K=1}+ g220 \times I_{K=2}
 Drücke die Parameter mit Erwartungswerten aus und interpretiere sie in Worten.
 
 ### Übung K4
-Wenn mehrere kategoriale Variable (z.B. $\small K_1$ -weiblich vs. männlich- und $\small K_2$ -Kategorie 2(EG) vs. Kategorie 1(KG)) als Prädiktoren ausgewählt wurden, so kombiniert EffectLiteR diese zu einem gemeinsamen kategorialen Prädiktor. Auf diese Art und Weise kreiert EffectLiteR für das genannte Beispiel eine vierstufige Kovariate K mit den Ausprägungen:
+Wenn mehrere kategoriale Variable (z.B. $\small K_1$ -weiblich vs. männlich- und $\small K_2$ -Kategorie 2(K1) vs. Kategorie 1(K2)) als Prädiktoren ausgewählt wurden, so kombiniert EffectLiteR diese zu einem gemeinsamen kategorialen Prädiktor. Auf diese Art und Weise kreiert EffectLiteR für das genannte Beispiel eine vierstufige Kovariate K mit den Ausprägungen:
 
-* K=0 männlich-EG,
-* K=1 männlich-KG,
-* K=2 weiblich-EG,
-* K=3 weiblich-KG 
+* K=0 männlich-K1,
+* K=1 männlich-K2,
+* K=2 weiblich-K1,
+* K=3 weiblich-K2 
 
 Durch diese Parametrisierung kommt es nicht zur Berechnung von Interaktionen der kategorialen Prädiktoren untereinander.
 Stelle das entsprechende Regressionsmodell auf und interpretiere seine Parameter inhaltlich (in Worten und Erwartungswerten).
@@ -55,7 +55,7 @@ Stelle das entsprechende Regressionsmodell auf und interpretiere seine Parameter
 Auch bei  mehreren kontinuierlichen Kovariaten wird die Interaktion der Kovariaten nicht zur Aufklärung von Varianz im Prädiktor hinzugezogen. Bei einer zweistufigen Treatmentvariablen und zwei kontinuierlichen Kovariaten wird folgendes Regressionsmodell geschätzt:
 
 \begin{align}
-E(Y|X,Z_1,Z_2)&= g0(Z_1,Z_2) + g0(Z_1,Z_2) \times I_{X=1}\\
+E(Y|X,Z_1,Z_2)&= g0(Z_1,Z_2) + g1(Z_1,Z_2) \times I_{X=1}\\
 g0(Z_1,Z_2)&= g000 + g001 \times Z_1 +  g002 \times Z_2\\
 g1(Z_1,Z_2)&= g100 + g101 \times Z_1 +  g102 \times Z_2
 \end{align}
