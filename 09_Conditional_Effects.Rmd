@@ -20,14 +20,14 @@ Diese vier Reiter werden nun einer nach dem anderen besprochen.
 
 ## Conditional Effects I
 
-Unter Conditional Effects I werden für jeden Fall des Datensatzes alle beobachteten Prädiktoren aufgelistet und die Erwarteten Effekte unter diesen Bedingungen geschätzt.
+Unter Conditional Effects I werden für jeden Fall des Datensatzes alle beobachteten Prädiktoren aufgelistet und die erwarteten Effekte unter diesen Bedingungen geschätzt.
 
 ```{r, CEI, echo=FALSE, fig.cap="Conditional Effects I - Output", out.width = '100%', warning=FALSE, message=FALSE, fig.pos="htbp"}
 include_graphics("images/CEI1.png")
 ```
 
 Der erste beobachtete Fall ist also in der Treatmentgruppe $\small X=2$, hat auf der kategorialen Kovariate $\small k1$ die Ausprägung $\small 0$ und auf der kontinuierlichen Kovariaten $\small z_1$ die Ausprägung $\small 0.576647$ ($\small K$ ist dann relevant, wenn mehrere kategoriale Kovariaten vorliegen und von EffectLiteR automatisch zu einer kategorialen Variablen $\small K$ zusammengefasst werden). Unter diesen Prädiktor-Ausprägungen liegt der Erwartungswert der Effektfunktion $\small g2(K)$ bei $\small -0.0555$ und der Standardfehler bei $\small 0.0869$. Der Erwartungswert der abhängigen Variablen liegt bei $\small ExpOutc2 = 0.0743$.  
-Die Angaben zur Effektfunktion $\small g1(K)$ und dem Expected Outcome unter den Bedingungen $\small X=0$ (ExpOutc0) und $\small X=1$ (Exp.Outc1) sind mehr theoretischer Natur, da der erste angezeigte Fall nun mal der Treatmentgruppe $\small X=2$ zugeordnet ist.
+Die Angaben zur Effektfunktion $\small g1(K)$ und dem Expected Outcome unter den Bedingungen $\small X=0$ (ExpOutc0) und $\small X=1$ (Exp.Outc1) sind mehr theoretischer Natur, da der erste angezeigte Fall nun mal der Treatmentgruppe $\small X=2$ zugeordnet ist. Man kann die beiden Effektgrößen-Schätzer wie folgt interpretieren: Eine Person der Treatmentbedi
 
 ## Conditional Effects II
 
@@ -71,7 +71,7 @@ Der Reiter *Conditional Effects IV* kann dann verwendet werden, wenn lediglich e
 include_graphics("images/CEIV1.png")
 ```
 
-Der Output wird wie folgt interpretiert: Der geschätzte Effekt einer Veränderung von $\small X=0$ zu $\small X=1$ unter der Bedingung $\small k=k0$ ist $\small 3,288$, unter der Bedingung $\small k=k1$ ist der geschätzte Effekt $\small 1,409$ und unter der Bedingung $\small k=k2$ ist der geschätzte Effekt $\small -0,337$.  
+Der Output wird wie folgt interpretiert: Der geschätzte Effekt einer Veränderung von $\small X=0$ zu $\small X=1$ unter der Bedingung $\small k=k0$ ist $\small 3,288$, unter der Bedingung $\small k=k1$ ist der geschätzte Effekt um $\small 1,409$ kleiner als unter der Bedingung $\small k=k0$ und somit $\small E[g1(x)|k1=1]=3,288-1,409=1,879$ und unter der Bedingung $\small k=k2$ ist der geschätzte Effekt um $\small -0,337$ kleiner als unter der Bedingung $\small k=k0$ und somit $\small E[g1(x)|k1=2]=3,288-0,337=2,951$.  
 Dir wird aufgefallen sein, dass unter *Conditional Effects IV* nicht von vornherein Standardfehler für die geschätzten Effekte berechnet werden. Zur formalen Berechnung von Standardfehlern müssen generell bestimmte Annahmen getroffen werden (beispielsweise ob der Zusammenhang zwischen Prädiktor und Regressand linear oder quadratisch ist, Annahmen über die Form der Verteilung, …). Für die Regression einer Kovariaten auf eine Effektfunktion sind solche Verteilungsannahmen nicht generell bekannt, deshalb wird von EffektLiteR kein Standardfehler geschätzt.   
 Will man dennoch einen Standardfehler interpretieren kann man auf das Bootstrap-Verfahren zurückgreifen. Dabei werden auf Grundlage der Stichprobe verwandte Stichproben simuliert (durch zufälliges ziehen von Fällen „mit zurücklegen“, das heißt einige Fälle der Stichprobe werden gar nicht beachtet, andere Fälle mehrfach). Für jede simulierte Stichprobe wird die Regression der Kovariaten auf die Effektfunktion gerechnet, die Standardabweichung der so gefundenen Effektgrößenschätzer wird als Standardfehler interpretiert. Die Anzahl an Stichproben, die gezogen werden soll, kann der Nutzer unter *Number of bootstrap draws* frei angeben. Natürlich wird die Schätzung des Standardfehlers um so genauer, je mehr simulierte Stichproben gezogen werden, jedoch (*Vorsicht!*) dauert die Berechnung bei einer großen Zahl an Bootstraps auch entsprechend länger und kann nicht so einfach abgebrochen werden. 
 
