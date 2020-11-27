@@ -19,8 +19,7 @@ include_graphics("images/Lösung_Daten_Einlesen.png")
 
 Siehe die Lösung im Video an:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/Daten_Einlesen.mp4" type="video/mp4">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/K_UWilUA6z8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   
 ## Einfache lineare Regression
 ### A)
@@ -36,8 +35,7 @@ $\small E(Y|X=2)$ vs. $\small E(Y|X=1)$ entspricht g200 nach Wechsel der Referen
 
 Siehe die Lösung im Video an:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/einfach_Lösung.mp4" type="video/mp4">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/R5Eii6rIvco" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### B)
 Unter *Average Effects* im Hauptoutput finden sich die absoluten und die (an der Standardabweichung der AV in der Kontrollgruppe) standardisierten durchschnittlichen Effekte.
@@ -63,26 +61,20 @@ Daraus Folgt: $\small SD_{YinKontrollgruppe} \approx 9.44$
 
 Siehe die Lösung im Video an:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/zweifach_K_Lösung.mp4" type="video/mp4">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uuoMXqSLs3s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### B){#zstandlösung}
 
 *Subjektive soziale Unterstützung* z-standardisieren: $\small X_{z-stand.}=\frac{X-\bar{X}}{SD_X}$   
 Wie du eine Variable z-standardisierst kannst dir auch in folgenden Videos ansehen:
 
-Detailliertes Video zur z-Standardisierung von Variablen mit R:
+Detaillierte Erläuterung zur z-Standardisierung von Variablen mit R:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/z_Standardisierung_R.mp4" type="video/mp4">
-</video>
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ewbItIs3upQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Video zur z-Standardisierung von Variablen mit Excel:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/z_Standardisierung_Excel.mp4" type="video/mp4">
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wGtxw5KbB5Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Ansonsten ist die Aufgabe äquivalent zu lösen wie Aufgabe 1 zur zweifachen linearen Regression. Achte darauf, die z-standardisierte Variable unter *Continuous Covariates Z* einzugeben und unter Interactions *No interactions* auszuwählen.
@@ -107,8 +99,7 @@ Ansonsten ist die Aufgabe äquivalent zu lösen wie Aufgabe 1 zur zweifachen lin
 
 Siehe die Lösung im Video an:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/bedingt1_Lösung.mp4" type="video/mp4">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pS3yenevO38" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### B)
 
@@ -117,14 +108,12 @@ Siehe die Lösung im Video an:
 
 Siehe die Lösung im Video an:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/bedingt2_Lösung.mp4" type="video/mp4">
-  
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Po3g3OdLcfA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Plots
 
 Die bedingte lineare Regression erlaubt einen linearen Einfluss der Kovariaten auf die Effektfunktion: Behandlungsart 1 wirkt um so stärker, je höher die Ausprägung der Kovariaten bei behandelten Patienten ist. Die zweifache lineare Regression erlaubt lediglich einen konstanten Einfluss der Kovariaten auf die Behandlungsart. Die Effektfunktion verändert sich nicht in Abhängigkeit der Kovariaten-Ausprägung, sondern wird für alle Patienten gleich geschätzt.
 
 Höre dir die Erklärung im Video an:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/plots_Lösung.mp4" type="video/mp4">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XdLHvwQvnv8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
