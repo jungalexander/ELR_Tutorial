@@ -10,7 +10,15 @@ library(knitr)
 
 # Exkurs Adjustierte Mittelwerte{#exkadj}
 
-Bei der bedingten linearen Regression macht das Verfahren der Mittelwertsbildung einen Unterschied für den Fall, dass das Design bezüglich der Kovariaten nicht vollständig balanciert ist. Wie adjustierte Mittelwerte von $\small Y$ für die verschiedenen Ausprägungen von $\small X$  gebildet werden wird im Folgenden an [Beispiel 5](#bspfünf) zu unserem Beispieldatensatz demonstriert *(Treatmentvariable: Behandlungsart ist* $\small 0$,$\small 1$ *oder* $\small 2$*, Kovariaten: Subjektiv ausreichend soziale Unterstützungist * $\small 0$ oder $\small 1$*)*.
+Bei der bedingten linearen Regression macht das Verfahren der Mittelwertsbildung einen Unterschied für den Fall, dass das Design bezüglich der Kovariaten nicht vollständig balanciert ist. Wie adjustierte Mittelwerte von $\small Y$ für die verschiedenen Ausprägungen von $\small X$  gebildet werden wird im Folgenden an einem Beispiel demonstriert:
+
+(#bspfünf) zu unserem Beispieldatensatz demonstriert *(Treatmentvariable: Behandlungsart ist* $\small 0$,$\small 1$ *oder* $\small 2$*, Kovariaten: Subjektiv ausreichend soziale Unterstützungist * $\small 0$ oder $\small 1$*)*.
+
+[**Beispiel 8**]{#bspacht}  
+*Abhängige Variable* $\small Y$*: Gesundheitsscore von Patienten.*  
+*Treatmentvariable* $\small X$*: Erhalten Patienten Behandlungsart 1 (*$\small X=1$*) oder Behandlungsart 2 (*$\small X=1$*) oder erhalten sie keine Behandlung (*$\small X=0$*).*   
+*Kovariate *$\small K$*: Patient gibt an in seinem Umfeld ausreichend soziale Unterstützung zu erhalten (*$\small K=1$*) bzw. nicht genug Unterstützung zu erhalten (*$\small K=0$*).*  
+*Die entsprechenden Daten finden sich auch in unserem [Beispieldatensatz](../Datensätze/Übungsdatensatz_effectLiteR_Tutorial.csv).*
 
 Dem Output unter *Cell Counts* im Hauptoutput (siehe Figure \@ref(fig:exka1)) ist zu entnehmen, dass das Design im Beispiel unbalanciert ist: Unter der Bedingung $\small K=0$ liegen 116 Beobachtungen vor, unter der Bediungung $\small K=1$ liegen 184 Beobachtungen vor: 
 
@@ -19,7 +27,7 @@ include_graphics("images/Exkurs adjustierte Mittelwerte 2.png")
 ```
 
 Zur Bildung der adjustierten Mittelwerte werden zuerst bedingte Erwartungswerte für alle Ausprägungen von $\small X$ unter allen Ausprägungen der Kovariaten gebildet. Diesen Schritt haben die Berechnung von Randmittelwerten und adjustierten Mittelwerten noch gemeinsam.  
-Die bedingten Erwartungswerte werden zur Veranschaulichung für alle Zellen für die $\small X=0$ gilt berechnet (die bedingten Erwartungswerte unter der Bedingung $\small X=0$ werden nach dem selben Prinzip gebildet). Die Zahlenwerte für die Parameter g000 und g010 stammen aus der Analyse des Beispieldatensatzes für das Beispiel 5. Es ergeben sich:
+Die bedingten Erwartungswerte werden zur Veranschaulichung für alle Zellen, für die gilt $\small X=0$, berechnet (die bedingten Erwartungswerte unter der Bedingung $\small X=1$ werden nach dem selben Prinzip gebildet). Die Zahlenwerte für die Parameter g000 und g010 stammen aus der Analyse des Beispieldatensatzes für das Beispiel 8. Es ergeben sich:
 
 \begin{align}
 E(Y|X=0,K=1)&= g000 + g010 \notag\\  
@@ -34,16 +42,24 @@ E(Y|X=0,K=0)&= g000\\ 			       &= 28,895
 (\#eq:exk2)
 \end{align}
 
-Der zweite Schritt bei der Bildung adjustierter Mittelwerte ist die bedingten Erwartungswerte für die Ausprägungen der Treatmentvariable zu Mitteln. Dabei werdein die bedingten Erwartungswerte an der proportionalen Häufigkeit der Beobachtung der Ausprägungen der Kovariate gewichtet.  
+Der zweite Schritt bei der Bildung adjustierter Mittelwerte ist die bedingten Erwartungswerte für die Ausprägungen der Treatmentvariable zu mitteln. Dabei werdein die bedingten Erwartungswerte an der proportionalen Häufigkeit der Beobachtung der Ausprägungen der Kovariate gewichtet.  
 Zur Veranschaulichung wird der adjustierten Mitteslwert für die Bedingung $\small X=0$ aus den oben berechneten bedingten Erwartungswerten (Gleichungen \@ref(eq:exk1) und\@ref(eq:exk2)) und den Informationen zur Anzahl an Beobachtungen unter den Bedingugne $\small K=0$ und $\small K=1$ aus Figure \@ref(fig:exka1) berechnet:  
 
 \begin{align}
-Adj.Mean0 &= 32,721 \times \frac{116}{116+184} + 28,895 \times \frac{184}{116+184}\\
+Adj.Mean0 &= E(Y|X=0,K=1) \times \frac{N_{K=0}}{N} + E(Y|X=0,K=0) \times \frac{N_{K=1}}{N}\\
+          &= 32,721 \times \frac{116}{116+184} + 28,895 \times \frac{184}{116+184}\\
 &= 30,374
 (\#eq:exk3)
 \end{align}
 
-Bei der Berechnung von Randmittelwerten würde eine Gewichtung der bedingten Erwartungswerte ausbleiben, das Randmittel für die Bedingung $\small X=0$ wäre also $\frac{32,721+28,895}{2}$.  
+Bei der Berechnung von Randmittelwerten würde eine Gewichtung der bedingten Erwartungswerte ausbleiben, das Randmittel für die Bedingung $\small X=0$ wäre also:  
+
+\begin{align}
+Marginal.Mean0 &= E(Y|X=0,K=1) \times \frac{1}{2} + E(Y|X=0,K=0) \times \frac{1}{2}\\
+               &= 32,721 \times \frac{1}{2} + 28,895 \times \frac{1}{2}\\
+               &= 31,5475
+(\#eq:exk4)
+\end{align}
 
 Vergleiche den so berechneten adjustierten Mittelwert mit dem Output in der folgenden Abbildung:
 
@@ -51,7 +67,12 @@ Vergleiche den so berechneten adjustierten Mittelwert mit dem Output in der folg
 include_graphics("images/Exkurs adjustierte Mittelwerte 3.png")
 ```
 
-Die durchschnittlichen Effekte, die EffectLiteR ausgibt, basieren auf adjustierten Mittelwerten. Der durchschnittliche Effekt von Treatment $\small X=1$ ist also $\small 46,0-30,4=15,6$ (die gerundeten Zahlen stammen aus dem Output für adjustierte Mittelwerte (Figure \@ref(fig:exka2)), EffectLiteR nutzt zur Berechnung der  adjustierten Effekte weniger stark gerundete Zahelnwerte). Haupteffekte, wie sie etwa von einer ANOVA geschätzt werden, basieren hingegen auf der Differenz der marginal Means.   
-In der Verwendung adjustierter Mittelwerte liegt ein Vorteil der Analyse mit EffectLiteR gegenüber der Analyse mit einer ANOVA: Entspricht das Verhältnis der Anzahl der Beobachtungen unter den verschiedenen Ausprägungen der Kovariaten in etwa dem Verhältnis in der Population, so können mit den durchschnittlichen Effekten die Konsequenzen von Treatment-Maßnahmen auf die Gesamtpopulation besser abgeschätzt werden. 
+Die durchschnittlichen Effekte, die EffectLiteR ausgibt, basieren auf adjustierten Mittelwerten. Der durchschnittliche Effekt von Treatment $\small X=1$ ist also $\small 46,0-30,4=15,6$ (die gerundeten Zahlen stammen aus dem Output für adjustierte Mittelwerte (Figure \@ref(fig:exka2)), EffectLiteR nutzt zur Berechnung der  adjustierten Effekte weniger stark gerundete Zahelnwerte). Haupteffekte, wie sie etwa von einer ANOVA geschätzt werden, basieren hingegen auf der Differenz der marginal Means.
 
-**Beachte:** In nichtrandomisierten Studien, in denen evtl. Einflüsse der Kovariaten auf die Zuordnung zu den Treatmentbedingungen vorliegen (wenn sich z.B. vermehrt ältere Leute für die Treatmentbedingung zum Hörgeräte-Test und vermehrt jüngere Leute für die Kontrollbedingung melden und das Alter der Probanden Einflüsse auf die abhängige Variable aufweist), hat das hinzufügen konfundierter Kovariaten (in diesem Fall des Alters der Probanden) ebenfalls einen Einfluss auf die adjustierten Mittelwerte. Solche Kovariaten sollten unbedingt in die Regression aufgenommen werden, um fehlerhafte Effekt-Schätzungen zu vermeiden.
+Wann ist die Verwendung adjustierter Mittelwerte angemessen und wann sind marginal Means vorzuziehen?
+Adjustierte Mittelwerte sollten immer dann den marginal Means vorgezogen werden, wenn der Anteil der Personen mit einer bestimmten Kovariatenausprägung $\small K=k$ in unserem Datensatz den Anteil der Personen mit der gleichen Kovariatenausprägung $\small K=k$ in der Gesamtpopulation widerspiegelt und somit durchschnittliche Treatment-Effekte berechnet werden können. In unserem Beispiel nehmen wir an 300 zufällige ausgewählte Patienten danach befragt zu haben, ob sie genügend soziale Unterstützung erhalten. Wenn 184 der Patienten berichten nicht genügend Unterstützung zu erhalten, so enthält dies eine Information, die wir abbilden, indem wir adjustierte Mittelwerte berechnen.
+Wenn wir uns ein Experimental-Design vorstellen, in dem wir probieren möglichst gleich viele Personen mit den Kovariaten-Ausprägung $\small K=k_1$ und $\small K=k_2$ zu erheben (Beispielsweise wenn wir den Effekt einer Behandlung gegen Krebs bei normalgewichtigen Patienten und bei anorektischen Patienten vergleichen), aber auf Grund eines Dropouts ungleich große große Gruppen erhalten, so haben wir zum einen nicht das Ziel einen durchschnittlichen Treatment-Effekt zu berechnen, zum anderen enthält unsere Gruppengröße keine relevanten Informationen. In diesem Fall sollten wir marginal Means zur Effektgrößen-Berechnung verwenden (passiert automatisch wenn die Berechnung etwa mit SPSS vorgenommen wird, SPSS hat bisher keine Funktion zur berechnung adjustierter Mittelwerte). 
+
+Zusammengefasst: Entspricht das Verhältnis der Anzahl der Beobachtungen unter den verschiedenen Ausprägungen der Kovariaten in etwa dem Verhältnis in der Population, so können mit den von EffectLiteR berechneten, auf adjustierten Mittelwerten beruhenden, durchschnittlichen Effekten die Konsequenzen von Treatment-Maßnahmen auf die Gesamtpopulation besser abgeschätzt werden als mit Analysemethoden, die auf marginal Means beruhen. 
+
+**Beachte:** In Studien, in denen evtl. Einflüsse der Kovariaten auf die Zuordnung zu den Treatmentbedingungen vorliegen (wenn sich z.B. vermehrt ältere Leute für die Treatmentbedingung zum Hörgeräte-Test und vermehrt jüngere Leute für die Kontrollbedingung melden und das Alter der Probanden Einflüsse auf die abhängige Variable aufweist), hat das hinzufügen konfundierter Kovariaten (in diesem Fall des Alters der Probanden) ebenfalls einen Einfluss auf die adjustierten Mittelwerte. Solche Kovariaten (das Alter) sollten also unbedingt als zusätzliche Kovariaten in die Regression aufgenommen werden, um fehlerhafte Effekt-Schätzungen zu vermeiden.
