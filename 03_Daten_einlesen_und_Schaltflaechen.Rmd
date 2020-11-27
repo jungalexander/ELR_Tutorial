@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 ```{r, echo=FALSE, include=FALSE}
 library(knitr)
@@ -10,27 +10,41 @@ library(knitr)
 # Daten einlesen und Schaltflächen {#Einlesen_Schaltflächen}
 
 ## Aufbau der graphischen Oberfläche
-EffectLiteR hat zwei Panels mit verschiedenen Reitern. Das Eingabe-Panel am linken Rand dient der Spezifikation der Daten und der statistischen Tests, das Output-Panel am oberen Rand erlaubt die Betrachtung verschiedener Outputs. Unter dem Output-Panel werden die gewählten Ergebnisse dann angezeigt.  
+EffectLiteR hat zwei Panels mit verschiedenen Reitern. Das Input-Panel am linken Rand dient der Spezifikation der Daten und der statistischen Tests, das Output-Panel am oberen Rand erlaubt die Betrachtung verschiedener Outputs. Unter dem Output-Panel werden die gewählten Ergebnisse dann angezeigt.  
   
-```{r, echo=FALSE, fig.cap="EffektLiteR Panels", out.width = '100%', warning=FALSE, message=FALSE, fig.pos="h"}
+```{r, echo=FALSE, fig.cap="EffectLiteR Panels", out.width = '100%', warning=FALSE, message=FALSE, fig.pos="h"}
 include_graphics("images/aufbau_graphische_oberflaeche.png")
 ```
+
+Dieses Kapitel widmet sich dem Input-Panel, die relevantesten Reiter des Output-Panels werden im Laufe des Tutorials nach und nach eingeführt, hier nur in Kürze für den besseren Überblick:
+
+* *Data* zeigt die momentan eingelesenen Daten an. 
+* *EffectLiteR* zeigt das geschätzte Regressionsmodell sowie die Effektgrößenschätzer an.
+* *Syntax* zeigt die lavaan-Syntax an, die im Hintergrund von R berechnet wird (lavvan ist ebenfalls ein R-Paket). 
+* *Results* gibt den originalen lavvan-Output aus.
+* *Conditional Effects I* zeigt Effektgrößenschätzer für jede Person des Datensatzes an (geschätzt anhand der Kovariaten-Ausprägungen der einzelnen Personen).
+* *Conditional Effects II* - *IV* erlauben die Schätzung von Effekten unter selbst spezifizierten Kovariaten-Ausprägungen (CE II wenn die Ausprägungen aller Kovariaten spezifiziert werden sollen, CE III wenn nur einige Kovariaten-Ausprägungen spezifiziert werden sollen, CE IV wenn nur eine einzige Kovariaten-Ausprägung spezifiziert werden soll).
+* *User-Specified Tests* werden in diesem Tutorial aktuell nicht behandelt.
+* *Plot 1* - *4* zeigen einige informative, interaktive Graphiken zum Datensatz und den 
+ 
+
+
 ## Daten einlesen
 ### Beispieldatensätze
-EffectLiteR hat verschiedene Beispieldatensätze integriert, an denen Funktionen des Programmes getestet werden können. Die Beispieldatensätze können im Eingabe-Panel unter dem Reiter *Data* durch Klick auf *choose example data* ausgewählt und geladen werden. Ist ein Datensatz geladen beziehen sich auch alle durchgeführten Tests auf diesen Datensatz.
-Hast du in der aktuellen Sitzung bereits einen eigen Datensatz geladen kannst du zwar weitere eigene Datensätze, aber keine Beispieldatensätze mehr neu laden. Schließe die Anwendung hierfür und öffne Sie dann erneut.
+EffectLiteR hat verschiedene Beispieldatensätze integriert, an denen Funktionen des Programmes getestet werden können. Die Beispieldatensätze können im Input-Panel unter dem Reiter *Data* durch Klick auf *choose example data* ausgewählt und geladen werden. Ist ein Datensatz geladen beziehen sich auch alle durchgeführten Tests auf diesen Datensatz.
+Hast du in der aktuellen Sitzung bereits einen eigene Datensatz geladen kannst du zwar weitere eigene Datensätze, aber keine Beispieldatensätze mehr neu laden. Schließe die Anwendung hierfür und öffne Sie dann erneut.
 
 ### Eigene Datensätze
 Ebenfalls unter dem Eingabe-Reiter *Data* gibt es die Möglichkeit unter *Data File* eigene Datensätze auszuwählen und zu laden. Folgende Dateitypen werden von EffectLiteR erkannt: .csv, .dat, .txt, .sav, .xpt und .rds.
 Excel-Files können (unter *speichern unter*) im .csv-Format gespeichert werden, das .sav-Format wird von SPSS verwendet.
 
-Beachte: Mit EffektLiteR können Datensätze ausgewertet, nicht aber bearbeitet werden. Es ist nicht möglich einzelne Datenpunkte zu ändern oder zu löschen, es ist nicht möglich existente Variablen zu löschen oder neue Variablen zu berechnen. Die Datenaufbereitung sollte also vor der Analyse mit EffectLiteR in einem anderen Programm erfolgen. 
+Beachte: Mit EffectLiteR können Datensätze ausgewertet, nicht aber bearbeitet werden. Es ist nicht möglich einzelne Datenpunkte zu ändern oder zu löschen, es ist nicht möglich existente Variablen zu löschen oder neue Variablen zu berechnen. Die Datenaufbereitung sollte also vor der Analyse mit EffectLiteR in einem anderen Programm, z.B. in R, erfolgen. 
 
 Zum Laden eines eigenen Datensatzes durchsuche deinen Computer nach der gewünschten Datei durch einen Klick auf *Browse*.  Wenn du eine Datei ausgewählt hast, sollte EffectLiteR die gewünschten Daten automatisch laden und anzeigen (sofern du im Output-Panel am oberen Rand den Reiter *Data* ausgewählt hast. Wenn die Daten gar nicht angezeigt werden hast du eventuell eine Datei mit einem nicht unterstütztem Dateiformat ausgewählt.
 Überprüfe, ob die Daten von EffectLiteR korrekt gelesen werden. Bei fehlerhafter Darstellung  passe die Default-Einstellung unter *Additional Options to Read Data* an.
 
 #### Änderungen der Default-Einstellungen
-Zum ändern der Default-Einstellungen scrolle im Eingabe-Panel herunter bis du zu *Additional Options to Read Data* kommst (siehe Figure \@ref(fig:datenfig1)).   
+Zum ändern der Default-Einstellungen scrolle im Input-Panel herunter bis du zu *Additional Options to Read Data* kommst (siehe Figure \@ref(fig:datenfig1)).   
 
 ```{r, datenfig1, echo=FALSE, fig.cap="Änderungen der Default-Einstellungen", out.width = '40%', warning=FALSE, message=FALSE, fig.pos="h"}
 include_graphics("images/Dateneinlesen - Erweiterte Funktionen.png")
