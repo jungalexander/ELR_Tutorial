@@ -1,8 +1,7 @@
 ---
-output: bookdown::html_document2
+output:
   html_document: default
-  pdf_document: 
-      keep_tex: yes
+  pdf_document: default
 ---
 ```{r, echo=FALSE, include=FALSE}
 library(knitr)
@@ -10,18 +9,19 @@ library(knitr)
 
 # Installation
 
-Die (kostenfreie!) Applikation EffektLiteR kann auf zwei verschiedenen Wegen installiert und genutzt werden:
-Zum einen ist es möglich EffektLiteR über die Statistik-Software R zu verwenden (empfohlen), zum anderen ist es für Windows auch möglich EffektLiteR über einen Stand-Alone-Installer zu downloaden. Auch der Stand-Alone-Installer installiert im Hintergrund R.
+Das (kostenfreie!) EffectLiteR kann auf zwei verschiedenen Wegen installiert und genutzt werden:
+Zum einen ist es möglich EffectLiteR über die Statistik-Software R zu verwenden, zum anderen ist es für Windows auch möglich EffectLiteR über einen Stand-Alone-Installer zu downloaden. Auch der Stand-Alone-Installer installiert im Hintergrund R.
 
 ## Download und Verwendung via R
 
-R ist eine kostenfreie Open-Source-Statistiksoftware. Open Source bedeutet, dass verschiedene Wissenschaftler/Programmierer zusätzliche Pakete schreiben können, mit denen zusätzliche Rechenoperationen auf R ermöglicht werden. EffektLiteR ist ein solches zusätzliches Paket. 
+R ist eine kostenfreie Open-Source-Statistiksoftware. Open Source bedeutet, dass verschiedene Wissenschaftler/Programmierer zusätzliche Pakete schreiben können, mit denen zusätzliche Rechenoperationen auf R ermöglicht werden. EffectLiteR ist ein solches zusätzliches Paket. 
 Das Download läuft in drei Schritten ab.
 
 ### Schritt 1 – R downloaden
 
+Die Installation von R ist in einigen Screenshots sowie in einem kurzen Video weiter unten dokumentiert. 
 Unter dem Link <https://cran.r-project.org/mirrors.html> findest du verschiedene „Mirrors“ für R, das heißt du findest Links zum Download von R, die von verschiedenen Institutionen bereitgestellt werden. Es wird empfohlen den Link der geographisch am nächsten liegenden Institution zu verwenden.
-Klicke auf einen Mirror, Wähle das von dir verwendeten Betriebssystem aus, dann downloade R.
+Klicke auf einen Mirror, Wähle das von dir verwendete Betriebssystem aus, dann downloade R.
 
 ```{r, echo=FALSE, fig.cap="Download von R", out.width = '100%', warning=FALSE, message=FALSE, fig.pos="h"}
 include_graphics("images/Download_R.png")
@@ -31,14 +31,8 @@ Nach Klick auf *install R for the first time* downloadet eine .exe-Datei, die au
 
 Wenn du Schwierigkeiten bei der Installation von R hast, schaue dir folgendes Video an:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/Download_R.mp4" type="video/mp4">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BxQx0HgjU14" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   
-
-
-
-
-
 ### Schritt 2 – RStudio downloaden
 
 Mit R hast du das Programm heruntergeladen, das die Rechenoperationen im Hintergrund ausführt, R selbst hat aber keine benutzerfreundliche Oberfläche. Eine Oberfläche, mit der R bedient werden kann, ist RStudio.  
@@ -53,8 +47,7 @@ Durch den Klick auf *Download RStudio* downloadet eine weitere .exe-Datei, die z
 
 Download von RStudio im Video:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/Download_RStudio.mp4" type="video/mp4">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/thamp7fE82U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Schritt 3 – EffectLiteR installieren und öffnen
 
@@ -72,13 +65,11 @@ Die beiden unteren Befehle (*library(EffectLiteR)* und *EffectLiteGUI()*) musst 
 include_graphics("images/Install_and_open_ELR.png")
 ```  
 
-
-
 Installation und Öffnen von EffectLiteR im Video:
 
-<video width="320" height="240" controls>
-  <source src="screenvideos/Install_Load_EffectLiteR.mp4" type="video/mp4">
-  
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CM5xfqWU4Ac" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Download mit dem Windows-Installer
 
 **Beachte:** Nutze diese Funktion nicht, wenn du R bereits auf deinem PC installiert hast.  
